@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button, ChakraProvider } from '@chakra-ui/react'
+import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
+import theme from "./theme/theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <h1>Hello World</h1>
+      <p>Hello World</p>
+      <br />
+      <PhoneIcon />
+      <br />
+      <AddIcon w={10} h={10} />
+      <br />
+      <WarningIcon w={75} h={75} color="red.500" />
+      <br />
+      <Button colorScheme="blue">ボタン</Button>
+    </ChakraProvider>
   );
 }
 
