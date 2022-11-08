@@ -6,10 +6,13 @@ import { useNavigate } from "react-router-dom";
 type Props = {
     isOpen: boolean;
     onClose: () => void;
+    onClickHome: () => void;
+    onClickUserManagement: () => void;
+    onClickSetting: () => void;
 }
 
 export const MenuDrower: FC<Props> = (props) => {
-    const { isOpen, onClose } = props;
+    const { isOpen, onClose, onClickHome, onClickUserManagement, onClickSetting } = props;
     const navigate = useNavigate();
 
     return (
@@ -28,15 +31,24 @@ export const MenuDrower: FC<Props> = (props) => {
                     <Input placeholder='Type here...' />
                     <Button
                         w="100%"
-                        onClick={() => navigate('/home')}
+                        onClick={() => {
+                            onClickHome()
+                            onClose()
+                        }}
                     >TOP</Button>
                     <Button
                         w="100%"
-                        onClick={() => navigate('/home/user_management')}
+                        onClick={() => {
+                            onClickUserManagement()
+                            onClose()
+                        }}
                     >ユーザー一覧</Button>
                     <Button
                         w="100%"
-                        onClick={() => navigate('/home/setting')}
+                        onClick={() => {
+                            onClickSetting()
+                            onClose()
+                        }}
                     >設定</Button>
                 </DrawerBody>
             </DrawerContent>

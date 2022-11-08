@@ -1,15 +1,22 @@
+/* eslint-disable */
+
 import { Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
-import { memo, FC } from "react";
-import { Link } from "react-router-dom";
+import { memo, FC, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { MenuIconButton } from "../../atoms/button/MenuIconButton";
 import { MenuDrower } from "../../molecules/MenuDrower";
 
-export const Header: FC = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+export const Header: FC = memo(() => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    let navigate = useNavigate();
+    // const navgate = useNavigate();
+    const onClickHome = useCallback(() => navigate("/home"), []);
+
+    const onClickUserManagement = useCallback(() => navigate("/home/user_management"), [])
+    const onClickSetting = useCallback(() => navigate("/home/setting"), [])
 
     return (
         <>
-
             <Flex
                 as="nav"
                 bg="teal.500"
@@ -24,6 +31,7 @@ export const Header: FC = () => {
                     as="a"
                     mr={8}
                     _hover={{ cursor: "pointer" }}
+                    onClick={onClickHome}
                 >
                     <Heading
                         as="h1"
@@ -37,15 +45,25 @@ export const Header: FC = () => {
                     flexGrow={2}
                     display={{ base: "none", md: "flex" }}
                 >
-                    <Box pr={4}>
-                        <Link to={"/home/user_managemen"}>ユーザー一覧</Link>
-                        <Link to={"/home/setting"}>設定</Link>
+                    {/**
+                     * toを指定せずにonClickのコールバックでusenavigateしようとしたが、
+                     * うまく動作しないため、toを指定したうえでonClickでも動作できるようにした
+                     * また、
+                     **/}
+                    <Box pr={4} >
+                        <Link to={"/home/user_management"} onClick={onClickUserManagement}>ユーザ一覧</Link>
                     </Box>
+                    <Link to={"/home/setting"} onClick={onClickSetting}>設定</Link>
                 </Flex>
                 <MenuIconButton onOpen={onOpen} />
             </Flex>
-
-            <MenuDrower isOpen={isOpen} onClose={onClose} />
+            <MenuDrower
+                isOpen={isOpen}
+                onClose={onClose}
+                onClickHome={onClickHome}
+                onClickUserManagement={onClickUserManagement}
+                onClickSetting={onClickSetting}
+            />
         </>
     )
-}
+})

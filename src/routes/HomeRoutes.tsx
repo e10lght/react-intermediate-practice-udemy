@@ -19,5 +19,9 @@ export const homeRoutes = [
   {
     path: "*",
     children: <Page404 />
+  },
+  {
+    path: "/home/*",
+    children: <Page404 />
   }
 ];

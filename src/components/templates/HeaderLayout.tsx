@@ -5,7 +5,7 @@ type Props = {
     children: ReactNode;
 }
 
-export const HeaderLayout: FC<Props> = (props) => {
+export const HeaderLayout: FC<Props> = memo((props) => {
     const { children } = props;
     return (
         <div>
@@ -13,4 +13,4 @@ export const HeaderLayout: FC<Props> = (props) => {
             {children}
         </div>
     )
-}
+})
