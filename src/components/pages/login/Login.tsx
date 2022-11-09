@@ -5,9 +5,9 @@ import { PrimaryButton } from "../../atoms/button/PrimaryButton";
 
 export const Login: FC = memo(() => {
     const { login, loading } = useAuth();
-    // const { userId, setUserId } = useState("");
-    const [userId, setUserId]: [string,
-        React.Dispatch<React.SetStateAction<string>>] = useState<string>("");
+    const [userId, setUserId] = useState("");
+    // const [userId, setUserId]: [string,
+    //     React.Dispatch<React.SetStateAction<string>>] = useState<string>("");
 
 
     const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => {

@@ -6,9 +6,9 @@ import { useMessage } from "../useMessage";
 
 export const useAuth = () => {
     const navigate = useNavigate();
-    const [loading, setLoading]: [boolean,
-        React.Dispatch<React.SetStateAction<boolean>>] = useState<boolean>(false);
-    // const {loading, setLoading} = useState(false); 
+    // const [loading, setLoading]: [boolean,
+    //     React.Dispatch<React.SetStateAction<boolean>>] = useState<boolean>(false);
+    const [loading, setLoading] = useState(false); 
 
     const { showMessage } = useMessage();
 
