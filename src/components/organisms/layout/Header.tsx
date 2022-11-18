@@ -48,7 +48,6 @@ export const Header: FC = memo(() => {
                     {/**
                      * toを指定せずにonClickのコールバックでusenavigateしようとしたが、
                      * うまく動作しないため、toを指定したうえでonClickでも動作できるようにした
-                     * また、
                      **/}
                     <Box pr={4} >
                         <Link to={"/home/user_management"} onClick={onClickUserManagement}>ユーザ一覧</Link>
