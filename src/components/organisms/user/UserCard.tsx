@@ -3,14 +3,15 @@ import { Box, Button, IconButton, Image, Stack, Text, useDisclosure } from "@cha
 import { FC, ReactNode } from "react";
 
 type Props = {
+    id: number;
     imageUrl: string;
     userName: string;
     fullName: string;
-    onClick: () => void;
+    onClick: (id: number) => void;
 }
 
 export const UserCard: FC<Props> = (props) => {
-    const { imageUrl, userName, fullName, onClick } = props;
+    const { id, imageUrl, userName, fullName, onClick } = props;
 
     return (
         <Box
@@ -21,7 +22,7 @@ export const UserCard: FC<Props> = (props) => {
             shadow="md"
             p={4}
             _hover={{ cursor: "pointer", opacity: "0.8" }}
-            onClick={onClick}
+            onClick={() => onClick(id)}
         >
             <Stack textAlign="center">
                 <Image
